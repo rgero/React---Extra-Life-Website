@@ -1,6 +1,6 @@
 import React from 'react'
 
-import TotalComponent from './Donation'
+import DonationWrapper from './DonationWrapper'
 import Header from './Header'
 
 class ExtraLifeWebsite extends React.Component
@@ -14,7 +14,7 @@ class ExtraLifeWebsite extends React.Component
         return (
             <div>
                 <Header/>
-                <TotalComponent/>
+                <DonationWrapper/>
             </div>
         )
     }

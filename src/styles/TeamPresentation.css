@@ -1,0 +1,22 @@
+.teamDonationWrapper {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  text-align: center;
+  padding: 10px;
+  border-radius: 15px;
+  background-color:cornflowerblue;
+  overflow-wrap: break-word;
+}
+
+.teamTotal {
+  padding-top: 20px;
+  font-size: 55px;
+}
+
+.currentYear
+{
+  padding-top: 20px;
+  font-size: 30px;
+}
