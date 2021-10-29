@@ -1,12 +1,10 @@
 .teamDonationWrapper {
-  margin: auto;
   display: flex;
   flex-direction: column;
-  width: 45%;
   text-align: center;
-  padding: 10px;
+  padding: 22px;
   border-radius: 15px;
-  background-color:cornflowerblue;
+  background-color:#1ECBE1;
   overflow-wrap: break-word;
 }
 
@@ -16,6 +14,12 @@
 }
 
 .currentYear
+{
+  padding-top: 20px;
+  font-size: 40px;
+}
+
+.currentPercentage
 {
   padding-top: 20px;
   font-size: 30px;

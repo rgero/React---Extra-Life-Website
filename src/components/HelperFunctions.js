@@ -1,5 +1,4 @@
 const axios = require('axios');
-const numeral = require('numeral');
 
 class HelperFunctions
 {
@@ -9,7 +8,6 @@ class HelperFunctions
     this.constructTeamURL = this.constructTeamURL.bind(this);
     this.constructURL = this.constructURL.bind(this);
     this.generateURLs = this.generateURLs.bind(this);
-    this.formatValue = this.formatValue.bind(this);
   }
 
   async GetData(targetURL)
@@ -46,12 +44,6 @@ class HelperFunctions
   constructPlayerURL(id)
   {
     return this.constructURL('participants', id);
-  }
-
-  formatValue(newValue)
-  {
-    /* This is a bit overkill, but I'm sure there will be more uses for numeral */
-    return numeral(newValue).format('$0,0[.]00')
   }
 
   generateURLs(ids)

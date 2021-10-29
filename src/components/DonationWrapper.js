@@ -35,7 +35,7 @@ class DonationWrapper extends React.Component
     let teamData = this.state.teamData;
     return (
       <div className="teamDonationWrapper">
-        <TeamPresentation sumTotal={teamData["sumDonations"]} helper={this.helper}/>
+        <TeamPresentation teamData={teamData} helper={this.helper}/>
       </div>
     )
   }
