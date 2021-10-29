@@ -1,13 +1,17 @@
 import React from 'react';
+import '../styles/donations.css';
 const axios = require('axios');
+const numeral = require('numeral');
+
 
 class TotalComponent extends React.Component
 {
   constructor(props)
   {
     super(props)
-    this.ConstructURL = this.ConstructURL.bind(this);
-    this.GetData = this.GetData.bind(this);
+    this.constructURL = this.constructURL.bind(this);
+    this.getData = this.getData.bind(this);
+    this.parseValue = this.parseValue.bind(this);
 
     this.state = {
       sumDonations: 0,
@@ -15,7 +19,7 @@ class TotalComponent extends React.Component
     }
   }
 
-  async GetData(targetURL)
+  async getData(targetURL)
   {
     try {
       let data = axios.get(targetURL)
@@ -35,7 +39,7 @@ class TotalComponent extends React.Component
     }
   }
 
-  ConstructURL()
+  constructURL()
   {
     let baseURL = 'https://www.extra-life.org/api/teams/';
     let teamID = '56196';
@@ -44,8 +48,8 @@ class TotalComponent extends React.Component
 
   async componentDidMount()
   {
-    let targetURL = this.ConstructURL();
-    let jsonData = await this.GetData(targetURL);
+    let targetURL = this.constructURL();
+    let jsonData = await this.getData(targetURL);
 
     let sumTotal = parseFloat(jsonData["sumDonations"]) + this.state.previousYears;
 
@@ -55,14 +59,23 @@ class TotalComponent extends React.Component
     })
   }
 
+  parseValue(inputValue)
+  {
+    /* This seems a bit overkill */
+    return numeral(inputValue).format('$0,0[.]00');
+  }
+
 
   render() 
   {
+    let currentYear = this.parseValue(this.state.donationTotal);
+    let teamTotal = this.parseValue(this.state.sumTotal)
+
     return (
       <div>
-        <div>The team has raised {this.state.donationTotal} in 2021</div>
+        <div className="currentYear">The team has raised {currentYear} in 2021</div>
 
-        <div><h1>For a total of: {this.state.sumTotal}</h1></div>
+        <div className="overallTotal">For a total of: {teamTotal}</div>
       </div>
     )
   }
