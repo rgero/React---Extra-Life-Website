@@ -99,7 +99,6 @@ class HelperFunctions
       }
       desiredData.push(targetData);
     }
-    console.log(desiredData);
     return desiredData
   }
 

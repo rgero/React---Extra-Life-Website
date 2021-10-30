@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/DonationWrapper.css';
 import HelperFunctions from './HelperFunctions';
 import TeamPresentation from './TeamPresentation';
+import PlayerPresentation from './PlayerPresentation';
 
 class DonationWrapper extends React.Component
 {
@@ -18,24 +19,46 @@ class DonationWrapper extends React.Component
     this.helper = new HelperFunctions();
   }
 
+  sortPlayersByDonationAmount(playerArray)
+  {
+    playerArray.sort(function(a,b)
+    {
+      return parseFloat(b.sumDonations) - parseFloat(a.sumDonations);
+    })
+    return playerArray;
+  }
+
   async componentDidMount()
   {
-    console.log("I'm here");
     let desiredData = await this.helper.getAllData();
+
+    // Sort Team order
+    const teamData = desiredData.shift();
+    const playerData = this.sortPlayersByDonationAmount(desiredData);
     this.setState(
       {
-        teamData: desiredData[0]
+        teamData: teamData,
+        players: playerData
       }
     )
-    console.log(this.state.teamData);
   }
 
   render() 
   {
     let teamData = this.state.teamData;
     return (
-      <div className="teamDonationWrapper">
-        <TeamPresentation teamData={teamData} helper={this.helper}/>
+      <div>
+        <div className="teamDonation">
+          <TeamPresentation teamData={teamData} helper={this.helper}/>
+          <hr/>
+        </div>
+        <div>
+          {this.state.players ? this.state.players.map(function(data)
+            {
+              return <PlayerPresentation className="playerPresentation" player={data}/>
+            }) : "No Players Loaded"
+          }
+        </div>
       </div>
     )
   }

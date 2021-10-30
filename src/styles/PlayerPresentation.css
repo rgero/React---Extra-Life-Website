@@ -1,4 +1,4 @@
-.teamDonationWrapper {
+.playerDonationWrapper {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -25,4 +25,11 @@
   margin:auto;
   width:75%;
   padding-top: 20px;
+}
+
+.playerName
+{
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: left;
 }

@@ -28,9 +28,9 @@ class TeamPresentation extends React.Component
     const currentGoal = this.formatValue(this.props.teamData["goal"]);
     const currentPercentage = numeral(parseFloat(this.props.teamData["sumDonations"])/parseFloat(this.props.teamData["goal"])).format('0.00%');
     return (
-      <div className="teamTeamPresentation">
+      <div className="teamDonationWrapper">
         <div className="currentYear">This year the team has raised {currentYear} of our {currentGoal} goal</div>
-        <div className="currentPercentage">That's {currentPercentage}!</div>
+        <div className="currentPercentage">That means we're <b>{currentPercentage}</b> towards our goal!</div>
         <div className="teamTotal">Lifetime Total Raised: {currentTotal}</div>
       </div>
     )
