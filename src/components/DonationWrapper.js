@@ -50,12 +50,11 @@ class DonationWrapper extends React.Component
       <div>
         <div className="teamDonation">
           <TeamPresentation teamData={teamData} helper={this.helper}/>
-          <hr/>
         </div>
         <div>
           {this.state.players ? this.state.players.map(function(data)
             {
-              return <PlayerPresentation className="playerPresentation" player={data}/>
+              return <div><hr/><PlayerPresentation className="playerPresentation" player={data}/></div>
             }) : "No Players Loaded"
           }
         </div>
